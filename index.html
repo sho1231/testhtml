@@ -22,10 +22,6 @@ let b= "fb-send-to-messenger";
         cookie: true
       });
 
-      FB.Event.subscribe('send_to_messenger', function(e) {
-        console.log("messenger_checkbox event");
-        console.log(e);
-      });
       FB.Event.subscribe('messenger_checkbox', function(e) {
         console.log("messenger_checkbox event");
         console.log(e);
