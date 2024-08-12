@@ -16,8 +16,20 @@
       FB.init({
         appId            : '5069878196415663',
         xfbml            : true,
-        version          : 'v20.0'
+        version          : 'v20.0',
+        cookie: true
       });
+      FB.AppEvents.logPageView();  
+
+    function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
+FB.getLoginStatus(function(response) {
+  console.log(response);
+    statusChangeCallback(response);
+});
       FB.Event.subscribe('messenger_checkbox', function(e) {
         console.log("messenger_checkbox event");
         console.log(e);
@@ -44,6 +56,11 @@
   <h1>108189667530839</h1>
   <h2>asd</h2>
   <form onsubmit="">
+
+<fb:login-button 
+scope="public_profile,email"
+onlogin="checkLoginState();">
+</fb:login-button>
   <div class="fb-messenger-checkbox"  
     page_id=198520160022071
     messenger_app_id=5069878196415663
