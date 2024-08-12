@@ -42,6 +42,7 @@ let b= "fb-send-to-messenger";
       let user_ref=getRandomInt(23)
       abcs[0].setAttribute("user_ref",user_ref);
       abcs[0].setAttribute("ref",ref);
+      abcs[0].setAttribute("origin",window.location.href);
       function confirmOptIn() {
     // FB.CheckboxPlugin.confirm({
     //   'app_id':'635145891914368',
@@ -59,6 +60,7 @@ let b= "fb-send-to-messenger";
   <form onsubmit="">
   <div class="fb-messenger-checkbox"  
     page_id=198520160022071
+    
     opt-in-type="transactional"
     messenger_app_id=5069878196415663
     allow_login=true
