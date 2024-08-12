@@ -25,7 +25,7 @@ let b= "fb-send-to-messenger";
       FB.Event.subscribe('messenger_checkbox', function(e) {
         console.log("messenger_checkbox event");
         console.log(e);
-      
+          
         if (e.event == 'rendered') {
           console.log("Plugin was rendered");
         } else if (e.event == 'checkbox') {
@@ -38,10 +38,8 @@ let b= "fb-send-to-messenger";
         }});
       let abcs=document.getElementsByClassName(a);
       console.log(abcs[0]);
-      let ref = getRandomInt(23);
       let user_ref=getRandomInt(23)
       abcs[0].setAttribute("user_ref",user_ref);
-      abcs[0].setAttribute("ref",ref);
       abcs[0].setAttribute("origin",window.location.href);
       function confirmOptIn() {
     // FB.CheckboxPlugin.confirm({
@@ -60,12 +58,13 @@ let b= "fb-send-to-messenger";
   <form onsubmit="">
   <div class="fb-messenger-checkbox"  
     page_id=198520160022071
-    
     opt-in-type="transactional"
     messenger_app_id=5069878196415663
     allow_login=true
     skin="dark"
-    size="standard">
+    size="standard"
+    fbe_external_business_id="asddsa"
+    >
   </div>
   <input type="submit"/>
 </form>
