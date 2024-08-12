@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId            : '635145891914368',
+        xfbml            : true,
+        version          : 'v20.0'
+      });
+      FB.Event.subscribe('messenger_checkbox', function(e) {
+        console.log("messenger_checkbox event");
+        console.log(e);
+      
+        if (e.event == 'rendered') {
+          console.log("Plugin was rendered");
+        } else if (e.event == 'checkbox') {
+          var checkboxState = e.state;
+          console.log("Checkbox state: " + checkboxState);
+        } else if (e.event == 'not_you') {
+          console.log("User clicked 'not you'");
+        } else if (e.event == 'hidden') {
+          console.log("Plugin was hidden");
+        }
+      });
+      let abcs=document.getElementsByClassName("fb-messenger-checkbox");
+      console.log(abcs[0]);
+      abcs[0].setAttribute("user_ref","user"+getRandomInt(23));
+      abcs[0].setAttribute("ref","appt"+getRandomInt(23));
+      
+    };
+  </script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk/debug.js"></script>
+  <h1>108189667530839</h1>
+  <h2>asd</h2>
+  <form onsubmit="">
+  <div class="fb-messenger-checkbox"  
+    page_id=108189667530839
+    messenger_app_id=635145891914368
+    opt-in-type="transactional"
+    allow_login="true"
+    size="standard"
+    skin="dark"
+    center_align="true">
+  </div>
+  <input type="submit"/>
+</form>
+</body>
+
+</html>
