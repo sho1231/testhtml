@@ -21,11 +21,7 @@
       });
       FB.AppEvents.logPageView();  
 
-    function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-}
+
 FB.getLoginStatus(function(response) {
   console.log(response);
     statusChangeCallback(response);
@@ -72,6 +68,13 @@ onlogin="checkLoginState();">
   </div>
   <input type="submit"/>
 </form>
+<script>
+  function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
+</script>
 </body>
 
 </html>
