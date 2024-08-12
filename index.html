@@ -12,20 +12,20 @@
     function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
+let a= "fb-messenger-checkbox";
+let b= "fb-send-to-messenger";
     window.fbAsyncInit = function() {
       FB.init({
         appId            : '635145891914368',
         xfbml            : true,
-        version          : 'v20.0',
+        version          : 'v17.0',
         cookie: true
       });
-      FB.AppEvents.logPageView();  
 
-
-FB.getLoginStatus(function(response) {
-  console.log(response);
-    statusChangeCallback(response);
-});
+      FB.Event.subscribe('send_to_messenger', function(e) {
+        console.log("messenger_checkbox event");
+        console.log(e);
+      });
       FB.Event.subscribe('messenger_checkbox', function(e) {
         console.log("messenger_checkbox event");
         console.log(e);
@@ -39,12 +39,21 @@ FB.getLoginStatus(function(response) {
           console.log("User clicked 'not you'");
         } else if (e.event == 'hidden') {
           console.log("Plugin was hidden");
-        }
-      });
-      let abcs=document.getElementsByClassName("fb-messenger-checkbox");
+        }});
+      let abcs=document.getElementsByClassName(a);
       console.log(abcs[0]);
-      abcs[0].setAttribute("user_ref","user"+getRandomInt(23));
-      abcs[0].setAttribute("ref","appt"+getRandomInt(23));
+      let ref = getRandomInt(23);
+      let user_ref=getRandomInt(23)
+      abcs[0].setAttribute("user_ref",user_ref);
+      abcs[0].setAttribute("ref",ref);
+      function confirmOptIn() {
+    // FB.CheckboxPlugin.confirm({
+    //   'app_id':'635145891914368',
+    //   'page_id':'198520160022071',
+    //   'ref':ref,
+    //   'user_ref':user_ref
+    // });
+}
       
     };
   </script>
@@ -52,29 +61,16 @@ FB.getLoginStatus(function(response) {
   <h1>108189667530839</h1>
   <h2>asd</h2>
   <form onsubmit="">
-
-<fb:login-button 
-scope="public_profile,email"
-onlogin="checkLoginState();">
-</fb:login-button>
   <div class="fb-messenger-checkbox"  
-    page_id=198520160022071
-    messenger_app_id=635145891914368
+    page_id=108189667530839
     opt-in-type="transactional"
-    allow_login="true"
-    size="standard"
+    messenger_app_id=635145891914368
+    allow_login=true
     skin="dark"
-    center_align="true">
+    size="standard">
   </div>
   <input type="submit"/>
 </form>
-<script>
-  function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-}
-</script>
 </body>
 
 </html>
