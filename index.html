@@ -38,7 +38,9 @@ let b= "fb-send-to-messenger";
         }});
       let abcs=document.getElementsByClassName(a);
       console.log(abcs[0]);
+      let ref = getRandomInt(23);
       let user_ref=getRandomInt(23)
+      abcs[0].setAttribute("ref",ref);
       abcs[0].setAttribute("user_ref",user_ref);
       abcs[0].setAttribute("origin",window.location.href);
       function confirmOptIn() {
